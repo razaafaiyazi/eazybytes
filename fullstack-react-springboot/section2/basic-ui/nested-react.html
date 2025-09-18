@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>simple html using react</title>
+  </head>
+  <script src="./react-lib/react.development.js"></script>
+  <script src="./react-lib/react-dom.development.js"></script>
+  <body>
+    <h1>I am the super header</h1>
+    <div id="root">
+      <div>Hello, I am the child of Root</div>
+      <!--THIS LINE OF CODE WILL GET OVERWRITTEN BY REACT ELEMENTS AS IT IS INSIDE THE ROOT ELEMENTS-->
+    </div>
+    <h1>I am the super Footer</h1>
+    <script>
+      const h1Element = React.createElement(
+        "h1",
+        { style: { color: "blue" } },
+        "Hi, I'm Bob the builder!"
+      );
+      const h2Elemtent = React.createElement("h2", null, "I can fix it!");
+      const child1DivElement = React.createElement("div", { id: "child1" }, [
+        h1Element,
+        h2Elemtent,
+      ]);
+      const doraH1Element = React.createElement(
+        "h1",
+        { style: { color: "orange" } },
+        "Hi,I'm Dora the Explorer"
+      );
+      const doraH2Element = React.createElement(
+        "h2",
+        null,
+        "Let's go exploring"
+      );
+      const child2DivElement = React.createElement("div", { id: "child2" }, [
+        doraH1Element,
+        doraH2Element,
+      ]);
+      const parentDivElement = React.createElement("div", { id: "parent" }, [
+        child1DivElement,
+        child2DivElement,
+      ]);
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(parentDivElement);
+    </script>
+  </body>
+</html>
